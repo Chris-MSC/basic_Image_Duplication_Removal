@@ -23,17 +23,17 @@ def data_Collection(directory):
 
 
 #Function to compare two images via their array values
-def data_Comparison(file_data):
+def data_Comparison(file_Data):
     duplicate = 0
     position = 0
     
     # Getting the array value for the first image
-    for file_a in file_data:
+    for file_a in file_Data:
         image_a = cv2.imread(file_a)
         position += 1
         
         # Getting the array value for the image to compare
-        for file_b in file_data[position:]:
+        for file_b in file_Data[position:]:
             image_b = cv2.imread(file_b)
             #print(file_b)
             
@@ -42,13 +42,14 @@ def data_Comparison(file_data):
             
             # Counter for amount of duplicates
             if compare == True:
-                print('duplicate')
+                #print('duplicate')
                 os.remove(file_a)
                 break
             else:
                 continue
         
-       
+        completed_Feedback = position/len(file_Data)*100
+        print(round(completed_Feedback, 1), '%  Completed')
 
 
 
